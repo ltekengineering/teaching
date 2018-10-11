@@ -103,10 +103,16 @@ public class DailyPrices {
     }
     
     public float getDailyAverage(){
-        
-        return 0;
+//          float prices[] = {open,high,low,close};
+//        float average = Stats.averageOfElements(prices);
+//        return average;
+        return Stats.averageOfElements(new float[] {open,high,low,close});
     }
-    public float getDollarVolue(){
-        return 0;
+    
+    public float getDailySTDEV(){
+        return Stats.stdevOfElements(new float[]{open,high,low,close}, "population");
+    }
+    public float getDollarVolume(){
+        return this.volume*this.close;
     }
 }
