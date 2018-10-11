@@ -67,10 +67,13 @@ public class Class11A {
                         //shortMemory[k] = Float.parseFloat(msft[i-k-1][4]);
                         shortMemory[k] = Float.parseFloat(msft.get(i - k - 1)[4]);
                     }
-                    System.out.printf("Date:%s,Open:%f,High:%f,Low:%f,Close:%f,"
-                            + "AdjClose:%f,Volume:%,d,Dollar Volume:%,f,MA7:%f\n",
-                            date, dailyPrices[0], dailyPrices[1], dailyPrices[2], dailyPrices[3], dailyPrices[4],
-                            volume, volume * dailyPrices[3],
+                   System.out.printf("Date:%s,Open:%f,High:%f,Low:%f,Close:%f,"
+                            + "AdjClose:%f,Volume:%,d,Dollar Volume:%,f,Daily Average:%f,Daily STDEV:%f,MA7:%f\n",
+                            msft.get(i).getDate(), msft.get(i).getOpen(), msft.get(i).getHigh(),
+                            msft.get(i).getLow(), msft.get(i).getClose(), msft.get(i).getAdjClose(),
+                            msft.get(i).getVolume(), msft.get(i).getDollarVolume(),
+                            msft.get(i).getDailyAverage() ,
+                            msft.get(i).getDailySTDEV(),
                             Stats.averageOfElements(shortMemory));
                 }
 
