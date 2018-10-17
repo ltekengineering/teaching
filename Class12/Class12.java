@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Class12;
 
 import Class11.DailyPrices;
@@ -25,7 +21,7 @@ public class Class12 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        File file = new File("C:\\Users\\lakhan\\Downloads\\MSFT.csv");
+        File file = new File("C:\\Users\\lkhan\\Downloads\\MSFT.csv");
         //Example of checked exception handling
         HashMap<String,DailyPrices> msft = new HashMap<>();
         try {
@@ -57,6 +53,22 @@ public class Class12 {
         do{
             System.out.println("Please enter a date: ");
             date = kb.nextLine();
+            if(msft.containsKey(date)){
+                found = true;
+                DailyPrices dailyPrices = msft.get(date);
+                System.out.println("Date: "+dailyPrices.getDate());
+                System.out.println("Open: "+dailyPrices.getOpen());
+                System.out.println("High: "+dailyPrices.getHigh());
+                System.out.println("Low: "+dailyPrices.getLow());
+                System.out.println("Close: "+dailyPrices.getClose());
+                System.out.println("Adj Close: "+dailyPrices.getAdjClose());
+                System.out.println("Volume: " +dailyPrices.getVolume());
+                System.out.println("Dollar Volume: "+ dailyPrices.getDollarVolume());
+                System.out.println("Daily Average: "+dailyPrices.getDailyAverage());   
+                System.out.println("Daily STDEV "+dailyPrices.getDailySTDEV());
+            }else{
+                System.out.println(date + " does not exist. Please try again");
+            }
             
         }while(!found);
             
