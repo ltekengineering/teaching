@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Class16;
+package Class16.Feline;
+
+import Class16.Animals;
 
 /**
  *
