@@ -18,22 +18,22 @@ public class Circle extends Shape{
     @Override
     protected void calcArea(){
         if(this.radius > 0){
-            System.out.println("The area of the "+ this.shapeType+": " + Math.PI*this.radius*this.radius);
+            System.out.println("The area of the "+ this.shapeType+": " + (Math.PI*this.radius*this.radius));
         }else{
             System.out.println("Please enter the radius of the "+this.shapeType);
             this.radius = kb.nextShort();
-            System.out.println("The area of the "+ this.shapeType+": " + Math.PI*this.radius*this.radius);
+            System.out.println("The area of the "+ this.shapeType+": " + (Math.PI*this.radius*this.radius));
         }
     }
     
     @Override
     protected void calcPerimeter(){
         if(this.radius > 0){
-            System.out.println("The perimeter of the "+ this.shapeType+": " + 2*Math.PI*this.radius);
+            System.out.println("The perimeter of the "+ this.shapeType+": " + (2*Math.PI*this.radius));
         }else{
             System.out.println("Please enter the radius of the "+this.shapeType);
             this.radius = kb.nextShort();
-            System.out.println("The perimeter of the "+ this.shapeType+": " + 2*Math.PI*this.radius);
+            System.out.println("The perimeter of the "+ this.shapeType+": " + (2*Math.PI*this.radius));
         }
     }
     @Override

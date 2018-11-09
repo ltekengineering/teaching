@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author lakhan
  */
-public abstract class Shape {
+public abstract class Shape{
     
     protected String shapeType;
     protected Scanner kb;
