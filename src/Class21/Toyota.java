@@ -32,9 +32,9 @@ public class Toyota extends Car{
     @Override
     protected void autoParking(){
         if(this.model.equals("Camry")){
-            System.out.println(this.model + " has auto parking feature");
-        }else{
             System.out.println(this.model + " does not have auto parking feature");
+        }else{            
+            System.out.println(this.model + " has auto parking feature");
         }
     }
 }
