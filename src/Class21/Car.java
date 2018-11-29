@@ -16,4 +16,8 @@ public abstract class Car {
     protected abstract void laneKeepingMechanism();
     protected abstract void collisionPrevention();
     protected abstract void autoParking();
+    
+    protected String getModelType(){
+        return this.model;
+    }
 }
