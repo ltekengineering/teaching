@@ -16,7 +16,10 @@ public class Class24 {
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-            Thread t1 = new Thread(new RemoteCSV("https://finances.worldbank.org/resource/cvjk-iddq.csv"));
+            Thread t1 = new Thread(new RemoteCSV("https://chronicdata.cdc.gov/views/g4ie-h725/rows.csv?accessType=DOWNLOAD"));
+            t1.start();
+            Thread t2 = new Thread(new RemoteCSV("https://finances.worldbank.org/resource/cvjk-iddq.csv"));
+            t2.start();
         } catch (Exception e) {
         }
     }
