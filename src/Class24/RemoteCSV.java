@@ -11,7 +11,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
-
+import java.io.FileWriter;
+import java.io.BufferedWriter;
         
 /**
  *
@@ -19,8 +20,10 @@ import java.util.Arrays;
  */
 public class RemoteCSV implements Runnable{
     private String url;
-    public RemoteCSV(String url){
+    private boolean writefile;
+    public RemoteCSV(String url,boolean writefile){
         this.url = url;
+        this.writefile = writefile;
     }
     
     @Override 
@@ -31,12 +34,20 @@ public class RemoteCSV implements Runnable{
             InputStream inp = url.openStream();
             InputStreamReader inpr = new InputStreamReader(inp);
             BufferedReader bfr = new BufferedReader(inpr);
+            
+            FileWriter fw = new FileWriter("C:\\Users\\lakhan\\Downloads\\"+this.url.replace("/","_").replaceAll("[$&+,:;=?@#|]", "_"));
+            BufferedWriter bfw = new BufferedWriter(fw);
+            
             String line;
             int counter=0;
             while((line=bfr.readLine())!=null){
+                if(writefile){
+                    bfw.write(line+"\n");
+                }                
 //                System.out.println(Arrays.toString(line.trim().split(",")));
                 counter++;
             }
+            bfw.close();
             System.out.printf("There are %d lines in the file\n",counter);
         } catch (IOException e) {
             e.printStackTrace();
