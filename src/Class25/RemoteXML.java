@@ -44,7 +44,7 @@ public class RemoteXML implements Runnable{
             URL url = new URL(this.url);            
             InputStream inp = url.openStream();            
             //Writing mechanism
-            FileWriter fw = new FileWriter("C:\\Users\\lakhan\\Downloads\\"+this.url.replace("/","_").replaceAll("[$&+,:;=?@#|]", "_"));
+            FileWriter fw = new FileWriter("C:\\Users\\lakhan\\Downloads\\"+this.url.replace("/","_").replaceAll("[$&+,:;=?@#|]", "_")+".csv");
             BufferedWriter bfw = new BufferedWriter(fw);            
             //XML realted code
             DocumentBuilderFactory domBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -56,17 +56,28 @@ public class RemoteXML implements Runnable{
             System.out.println("Initial node type: "+doc.getDocumentElement().getNodeType());
             System.out.println("Initial node value: "+doc.getDocumentElement().getNodeValue());
             
+            //Give me everynode that starts with row
             NodeList nodeList = doc.getElementsByTagName("row");
             
             for(int i = 0;i<nodeList.getLength();i++){
-                Node eachRow = nodeList.item(i);
-                
+                Node eachRow = nodeList.item(i);                
                 NodeList childNodes = eachRow.getChildNodes();
+                
                 String line = "";
+                String header = "";
+                
                 for (int j = 0; j < childNodes.getLength(); j++) {
                     Node node  = childNodes.item(j);
-                   line+=  node.getNodeName()+" : "+node.getTextContent()+". ";
+                    header += node.getNodeName()+",";
+                    line +=  node.getNodeName()+" : "+node.getTextContent()+". ";                    
                 }
+                
+//                if (i == 0) {
+//                    fw.write(header + "\n");
+//                    fw.write(line + "\n");
+//                } else {
+//                    fw.write(line + "\n");
+//                }
                 System.out.println(line);
 //                System.out.printf("Zipe code: %s. "
 //                        + "Total Population: %s. "
