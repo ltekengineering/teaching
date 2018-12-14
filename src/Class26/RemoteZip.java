@@ -46,14 +46,15 @@ public class RemoteZip implements Runnable{
             BufferedReader bfr;
             InputStreamReader inpr;
             String line;
-            ZipFile zipfile = new ZipFile(url);
-            ZipEntry entry;
-            Enumeration<? extends ZipEntry> entries  = zipfile.entries();
-            while(entries.hasMoreElements()){
-                entry = entries.nextElement();
-                if(entry.getName().contains("txt")){
-                    inpr = new InputStreamReader(zipfile.getInputStream(entry));
-                    bfr = new BufferedReader(inpr);                                        
+            
+            ZipFile zipfile = new ZipFile(url);//url here is your local path to the zip folder. 
+            ZipEntry entry;//An object to handle each file in the zip folder
+            Enumeration<? extends ZipEntry> entries  = zipfile.entries();//an enumeration object like a list for looping 
+            while(entries.hasMoreElements()){//while there is a next file in that zip folder.
+                entry = entries.nextElement();//this is like the scanners nextInt() so its the next file.
+                if(entry.getName().contains("txt")){//the zip folder has txt files and a pdf files but we are only interested in the txt file
+                    inpr = new InputStreamReader(zipfile.getInputStream(entry));//unzipping the file is a streaming procedure we need a inputstreamreader
+                    bfr = new BufferedReader(inpr);//finally a buffered reader to read the files.                                        
                     while((line=bfr.readLine())!=null){
                         lineArray = line.split(",");
                         if(names.containsKey(lineArray[0])){
